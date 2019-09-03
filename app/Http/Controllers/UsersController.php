@@ -62,7 +62,10 @@ class UsersController extends Controller
     {
         $user = Users::where('id', $id)->first();
 
-        return response()->json($user, 201);
+        if($user != null)
+            return response()->json($user, 201);
+        else
+            return response()->json('User is not existing.', 400);
     }
 }    
 ?>
